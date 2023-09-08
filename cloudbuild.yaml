@@ -11,7 +11,7 @@ steps:
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     args: [
       'functions', 'deploy', 'helloWorldFunction',
-      '--runtime', 'python3.8',  # Specify the Python runtime version.
+      '--runtime', 'python38',  # Specify the Python runtime version.
       '--trigger-http', '--entry-point', 'hello-world-function',  # Replace 'your_python_function' with your Python function name.
       '--source', '.'
     ]
