@@ -1,12 +1,25 @@
+
+
 steps:
-  - name: 'gcr.io/cloud-builders/gcloud'
-    args:
-      - functions
-      - deploy
-      - --runtime=nodejs8
-      - --trigger-http
-      - --source=./ # Function source files
-      - --entry-point=helloCiCd # Function entry point
-      - helloCiCd # Function name
-    waitFor: ['_']
-    id: 'deploying-a-serverless-function'
+  # Step 1: Checkout your source code from your repository.
+  - name: 'gcr.io/cloud-builders/git'
+    args: ['clone', 'https://github.com/Arssssl/imtisalCICD/blob/master/hello-world-function.git', '.']
+  # You can replace 'https://github.com/your-repo.git' with your actual repository URL.
+
+  # Step 2: Install dependencies and build your function (Node.js example).
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['install']
+
+  # Step 3: Deploy your Cloud Function.
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    args: ['functions', 'deploy', 'helloWorldFunction', '--runtime', 'nodejs14', '--trigger-http', '--entry-point', 'hello_world', '--source', '.']
+    # Replace 'your-cloud-function-name' with your desired function name.
+    # Replace 'nodejs14' with your desired runtime.
+    # Replace 'your-function-name' with the entry point function name.
+    # Ensure the '--trigger-http' flag if you want to deploy an HTTP-triggered function.
+    # Use '--trigger-event' and '--trigger-resource' for other triggers.
+
+  # Optional Step: You can add more steps here if needed, such as running tests or other tasks.
+
+options:
+  machineType: 'N1_STANDARD_1'
