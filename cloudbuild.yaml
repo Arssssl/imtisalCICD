@@ -1,25 +1,17 @@
-
-
 steps:
   # Step 1: Checkout your source code from your repository.
   - name: 'gcr.io/cloud-builders/git'
     args: ['clone', 'https://github.com/Arssssl/imtisalCICD.git', '.']
-  # You can replace 'https://github.com/your-repo.git' with your actual repository URL.
 
-  # Step 2: Install dependencies and build your function (Node.js example).
-  - name: 'gcr.io/cloud-builders/npm'
-    args: ['install']
+  # Step 2: Install dependencies (if any).
+  - name: 'gcr.io/cloud-builders/pip'
+    args: ['install', '-r', 'requirements.txt']
 
-  # Step 3: Deploy your Cloud Function.
+  # Step 3: Deploy your Cloud Function (Python).
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    args: ['functions', 'deploy', 'helloWorldFunction', '--runtime', 'nodejs14', '--trigger-http', '--entry-point', 'hello_world', '--source', '.']
-    # Replace 'your-cloud-function-name' with your desired function name.
-    # Replace 'nodejs14' with your desired runtime.
-    # Replace 'your-function-name' with the entry point function name.
-    # Ensure the '--trigger-http' flag if you want to deploy an HTTP-triggered function.
-    # Use '--trigger-event' and '--trigger-resource' for other triggers.
-
-  # Optional Step: You can add more steps here if needed, such as running tests or other tasks.
-
-# options:
-#   machineType: 'N1_HIGHMEM_1'
+    args: [
+      'functions', 'deploy', 'helloWorldFunction',
+      '--runtime', 'python3.8',  # Specify the Python runtime version.
+      '--trigger-http', '--entry-point', 'hello-world-function',  # Replace 'your_python_function' with your Python function name.
+      '--source', '.'
+    ]
