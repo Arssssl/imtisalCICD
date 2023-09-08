@@ -10,26 +10,28 @@ steps:
   - name: 'gcr.io/cloud-builders/git'
     args: ['clone', 'https://github.com/Arssssl/imtisalCICD', 'imtisalCICD']
 
- 
-
-
-
-  # Step 2: Install dependencies (if any).
-  # - name: 'gcr.io/cloud-builders/pip'
-  #   args: ['install', '-r', 'requirements.txt']
-
-  # Step 3: Deploy your Cloud Function (Python).
-  # - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  #   args: [
-  #     'functions', 'deploy', 'helloWorldFunction',
-  #     '--runtime', 'python38',  # Specify the Python runtime version.
-  #     '--trigger-http', '--entry-point', 'hello-world-function',  # Replace 'your_python_function' with your Python function name.
-  #     '--source', '.'
-  #   ]
+  # Step 3: Install necessary Cloud SDK components.
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    args: ['components','install','beta','functions','-q']
-   
+    args:
+      - 'gcloud'
+      - 'components'
+      - 'install'
+      - 'beta'
+      - 'functions'
+      - '-q'  # Quiet mode to skip prompts
 
+  # Step 4: Deploy your Cloud Function (Python).
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    args: ['functions', 'deploy', 'helloWorldFunction', '--runtime', 'python38', '--trigger-http', '--entry-point', 'hello_world', '--source', '.', '--version', '444.0.0', '--clear-cache']
-  
+    args:
+      - 'functions'
+      - 'deploy'
+      - 'helloWorldFunction'
+      - '--runtime'
+      - 'nodejs14'
+      - '--trigger-http'
+      - '--entry-point'
+      - 'hello_world'
+      - '--source'
+      - '.'
+      - '--version'
+      - '444.0.0'
