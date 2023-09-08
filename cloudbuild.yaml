@@ -5,9 +5,7 @@ steps:
     args:
       - '-c'
       - 'rm -rf ./*'
-      - |
-        # Add additional logging here if needed
-        echo "Starting Cloud Function deployment..."
+      
       
   # Step 2: Checkout your source code from your repository.
   - name: 'gcr.io/cloud-builders/git'
