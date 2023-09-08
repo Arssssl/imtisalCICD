@@ -9,7 +9,9 @@ steps:
   # Step 2: Checkout your source code from your repository.
   - name: 'gcr.io/cloud-builders/git'
     args: ['clone', 'https://github.com/Arssssl/imtisalCICD', 'imtisalCICD']
-
+    - |
+      # Add additional logging here if needed
+      echo "Starting Cloud Function deployment..."
  
 
 
@@ -28,3 +30,5 @@ steps:
   #   ]
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     args: ['functions', 'deploy', 'helloWorldFunction', '--runtime', 'nodejs14', '--trigger-http', '--entry-point', 'hello_world', '--source', '.', '--version', '444.0.0']
+    options:
+      machineType: 'N1_HIGHCPU_8'  # Specify the desired machine type
