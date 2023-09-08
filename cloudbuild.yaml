@@ -27,7 +27,7 @@ steps:
       - 'deploy'
       - 'helloWorldFunction'
       - '--runtime'
-      - 'nodejs14'
+      - 'python311'
       - '--trigger-http'
       - '--entry-point'
       - 'hello_world'
