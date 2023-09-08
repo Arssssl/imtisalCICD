@@ -3,7 +3,7 @@
 steps:
   # Step 1: Checkout your source code from your repository.
   - name: 'gcr.io/cloud-builders/git'
-    args: ['clone', 'https://github.com/Arssssl/imtisalCICD/blob/master/hello-world-function.git', '.']
+    args: ['clone', 'https://github.com/Arssssl/imtisalCICD.git', '.']
   # You can replace 'https://github.com/your-repo.git' with your actual repository URL.
 
   # Step 2: Install dependencies and build your function (Node.js example).
