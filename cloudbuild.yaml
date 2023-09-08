@@ -19,10 +19,12 @@ steps:
   #   args: ['install', '-r', 'requirements.txt']
 
   # Step 3: Deploy your Cloud Function (Python).
+  # - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  #   args: [
+  #     'functions', 'deploy', 'helloWorldFunction',
+  #     '--runtime', 'python38',  # Specify the Python runtime version.
+  #     '--trigger-http', '--entry-point', 'hello-world-function',  # Replace 'your_python_function' with your Python function name.
+  #     '--source', '.'
+  #   ]
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    args: [
-      'functions', 'deploy', 'helloWorldFunction',
-      '--runtime', 'python38',  # Specify the Python runtime version.
-      '--trigger-http', '--entry-point', 'hello-world-function',  # Replace 'your_python_function' with your Python function name.
-      '--source', '.'
-    ]
+    args: ['functions', 'deploy', 'helloWorldFunction', '--runtime', 'nodejs14', '--trigger-http', '--entry-point', 'hello_world', '--source', '.', '--version', '444.0.0']
