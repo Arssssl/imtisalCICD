@@ -35,7 +35,7 @@ steps:
       - 'python311'
       - '--trigger-http'
       - '--entry-point'
-      - 'hello_world'
+      - 'hello-world-function'
       - '--source'
       - '.'
       - '--version'
