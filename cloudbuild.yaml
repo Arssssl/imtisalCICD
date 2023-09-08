@@ -27,4 +27,13 @@ steps:
   #     '--source', '.'
   #   ]
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  args:
+    - 'components'
+    - 'install'
+    - 'beta'
+    - 'functions'
+    - '-q'
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     args: ['functions', 'deploy', 'helloWorldFunction', '--runtime', 'python38', '--trigger-http', '--entry-point', 'hello_world', '--source', '.', '--version', '444.0.0', '--clear-cache']
+  
