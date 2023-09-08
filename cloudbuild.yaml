@@ -9,6 +9,11 @@ steps:
   # Step 2: Checkout your source code from your repository.
   - name: 'gcr.io/cloud-builders/git'
     args: ['clone', 'https://github.com/Arssssl/imtisalCICD', 'imtisalCICD']
+    
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    args:
+      - 'gcloud'
+      - '--version'
 
   # Step 3: Install necessary Cloud SDK components.
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
