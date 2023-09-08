@@ -22,4 +22,4 @@ steps:
   # Optional Step: You can add more steps here if needed, such as running tests or other tasks.
 
 options:
-  machineType: 'N1_STANDARD_1'
+  machineType: 'N1_HIGHMEM_1'
