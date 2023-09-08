@@ -4,8 +4,8 @@ steps:
     args: ['clone', 'https://github.com/Arssssl/imtisalCICD.git', '.']
 
   # Step 2: Install dependencies (if any).
-  - name: 'gcr.io/cloud-builders/pip'
-    args: ['install', '-r', 'requirements.txt']
+  # - name: 'gcr.io/cloud-builders/pip'
+  #   args: ['install', '-r', 'requirements.txt']
 
   # Step 3: Deploy your Cloud Function (Python).
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
